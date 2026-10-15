@@ -12,4 +12,4 @@ async def upload(project_id:str,file:UploadFile,appsettings:Settings = Depends(g
     is_valid=DataController().validate_upload_file(file=file)
     if not is_valid:
         return {"error":"Invalid file"}
-    
+    return is_valid
