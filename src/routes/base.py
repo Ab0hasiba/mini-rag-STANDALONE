@@ -3,7 +3,7 @@ import os
 from helpers.config import get_settings,Settings
 
 ini_router=APIRouter(
-    prefix='/api/version1',
+    prefix='/api/v1',
     tags=['api_v1'],
 )
 @ini_router.get("/")
