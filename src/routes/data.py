@@ -9,6 +9,6 @@ data_router=APIRouter(
 
 @data_router.post("/upload/{project_id}")
 async def upload(project_id:str,file:UploadFile,appsettings:Settings = Depends(get_settings)):
-    is_valid=DataController().validate_upload_file(file=file)
+    is_valid,Result_signal=DataController().validate_upload_file(file=file)
 
-    return is_valid
+    return {"signal":Result_signal}
