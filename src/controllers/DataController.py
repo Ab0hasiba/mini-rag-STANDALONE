@@ -1,6 +1,7 @@
 # pyrefly: ignore[missing-import]
 from fastapi import UploadFile
 from controllers.BaseController import BaseController
+from models import ResponseSignal
 class DataController(BaseController):
 
     def __init__(self):
@@ -9,7 +10,7 @@ class DataController(BaseController):
         
     def validate_upload_file(self,file:UploadFile):
         if file.content_type not in self.app_settings.FILE_ALLOWED_TYPES:
-            return False,'false_type_not_supported  '
+            return False,ResponseSignal.FILE_TYPE_NOT_SUPPORTED.value
         if file.size > self.app_settings.FILE_MAX_SiZE*self.size_scale:
-            return False,'false_size_exceeded'
-        return True,'Success'
+            return False,ResponseSignal.FILE_SIZE_EXCEEDED.value
+        return True,ResponseSignal.FILE_UPLOAD_SUCCESS.value
